@@ -8,7 +8,7 @@ const rimaRouter = express.Router();
 
 // Añadir rima
 rimaRouter.post('/', (req, res) => {
-  const { palabra, rima} = req.body;
+  const { palabra, rima } = req.body;
   
   const newProducto = {
     palabra,
