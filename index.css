@@ -8,6 +8,7 @@ body{
 
 h2{
     text-decoration: underline;
+    
 }
 
 a{
@@ -21,4 +22,20 @@ a{
 
 #error{
     color: red;
+}
+
+label{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: larger;
+}
+
+input{
+    height: 20px;
+}
+
+#boton{
+    width: 100px;
+    height: 30px;
+    font-size: large;
 }
