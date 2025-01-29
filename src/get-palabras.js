@@ -6,7 +6,8 @@ const SERVER = 'http://localhost:2000';
 
 let obtener = document.getElementById("obtener");
 
-// se le pone async y await para que espere a la respuesta de las funciones con la respuesta
+/* Si en el formulario se pulsa submit, se recoge la rima para buscar sus palabras relacionadas
+    Se pone async y await para que espere a la respuesta de las funciones */
 obtener.addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -23,14 +24,12 @@ obtener.addEventListener('submit', async e => {
 });
 
 
-
+// Usa la funcin de la API para buscar las palabras relacionadas con la rima indicada
 async function getPalabras(rimaConsultar) {
     try {
-        const resp = await fetch(`${SERVER}/rimas/rima/${rimaConsultar}`); // promesa fetch
-        // si el status no está entre 200 y 299, se produce error
+        const resp = await fetch(`${SERVER}/rimas/rima/${rimaConsultar}`);
         if (!resp.ok) throw new Error(`Error: ${resp.status} ${resp.statusText}`); 
-        // JSON a Objeto
-        const json = await resp.json(); // promesa .json()
+        const json = await resp.json();
         console.log(json);
         let rimasGet = json.data;
         console.log(rimasGet);
@@ -41,7 +40,8 @@ async function getPalabras(rimaConsultar) {
     }
 }
 
-
+/* Comprueba que la rima sea valida, y si no recibe nada de la funcion, 
+    sera porque la rima no esta almacenada, y lo indica */
 async function obtenerPalabras(rimaConsultar){
     if(isNaN(rimaConsultar)){
         let rimasObt = getPalabras(rimaConsultar);

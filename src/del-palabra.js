@@ -6,7 +6,8 @@ const SERVER = 'http://localhost:2000';
 
 let obtener = document.getElementById("obtener");
 
-// se le pone async y await para que espere a la respuesta de las funciones con la respuesta
+/* Si en el formulario se pulsa submit, se recogen la palabra a eliminar
+    Se pone async y await para que espere a la respuesta de las funciones */
 obtener.addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -21,15 +22,14 @@ obtener.addEventListener('submit', async e => {
     }    
 });
 
-
-
+// Usa la funcin de la API de elimnar palabra enviandole la palabra indicada
 async function deletePalabra(palabraEliminar) {
     try {
         const resp = await fetch(`${SERVER}/rimas/palabra/${palabraEliminar}`, {
             method: 'DELETE'
         });
         if (!resp.ok) throw new Error(`Error: ${resp.status} ${resp.statusText}`);
-        if(resp.status == 200) { // Borrado
+        if(resp.status == 200) {
             return true;
         }
     } catch (error) {
@@ -37,6 +37,8 @@ async function deletePalabra(palabraEliminar) {
     }
 }
 
+/* Comprueba que la palabra sea valida, y si no recibe nada de la funcion de eliminar, 
+    sera porque la palabra no esta almacenada, y lo indica */
 async function obtenerRimas(palabraEliminar){
     if(isNaN(palabraEliminar)){
         let eliminada = deletePalabra(palabraEliminar);
