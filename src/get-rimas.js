@@ -17,6 +17,8 @@ obtener.addEventListener('submit', async e => {
         let rimasMostrar = rimas.map(objeto => objeto.rima).join(", ");
         console.log(rimas);
         info.innerText = "La palabra " + palabraConsultar + " tiene como rimas:  " + rimasMostrar;
+    
+        error.innerText = "";
     }
     
 });
@@ -45,7 +47,8 @@ async function obtenerRimas(palabraConsultar){
     if(isNaN(palabraConsultar)){
         let rimasObt = getRimas(palabraConsultar);
 
-        error.innerText = "";
+        info.innerText = "";
+        error.innerText =  "La palabra no esta en el diccionario";
 
         return rimasObt;
     }
