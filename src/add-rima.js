@@ -46,6 +46,6 @@ function agregarRima(palabra, rima){
         postEvento(subir);
     }
     else{
-        info.innerText =  "Debes introducir palabras, ni numeros ni en blanco";
+        error.innerText =  "Debes introducir palabras, ni numeros ni en blanco";
     }
 }
